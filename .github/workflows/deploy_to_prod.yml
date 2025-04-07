@@ -1,0 +1,11 @@
+name: Deploy To Prod
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4

@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: prod
+  application:
+    name: cervejaria-app
+  session:
+    timeout: 1800
+  datasource:
+    url: jdbc:h2:mem:cervejaria
+    username: sa
+    password: 123456
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+server:
+  port: 8091
+management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health, info,metrics,prometheus"
+  health:
+    redis:
+      enabled: false

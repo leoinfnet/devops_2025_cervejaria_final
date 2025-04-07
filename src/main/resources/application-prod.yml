@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: cervejaria-app
+  session:
+    timeout: 1800
+  datasource:
+    url: jdbc:postgresql://10.101.92.207:5432/acme
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+  data:
+    redis:
+      host: 10.104.10.46
+      port: 6379
+      timeout: 1800
+      repositories:
+        enabled: true
+server:
+  port: 8080
