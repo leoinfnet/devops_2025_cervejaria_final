@@ -1,8 +1,8 @@
 name: Deploy To Prod
 on:
-  push:
+  pull_request:
     branches:
-      - "main"
+      - "prod"
 jobs:
   build:
     runs-on: self-hosted
