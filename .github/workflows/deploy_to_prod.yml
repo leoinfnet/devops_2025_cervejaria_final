@@ -31,6 +31,7 @@ jobs:
       - name: Executar testes
         run: mvn test
       - name: Incrementar Versao
+        id: increment-version
         run: |
           current=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "Versão atual: $current"
@@ -45,8 +46,12 @@ jobs:
 
       - name: Build do Projeto
         run: mvn package -DskipTests
-      - name: Commit do POM
-        run: |
-          git add pom.xml
-          git commit -m "Alterando a versao do projeto"
-          git push origin main
+      - name: Confirmar versao do codigo
+        run: | 
+          echo "nova versão é: ${{steps.increment-version.new_version}}
+#      - name: Commit do POM
+#        run: |
+#          git add pom.xml
+#          git commit -m "Alterando a versao do projeto"
+#          git push origin main
+
