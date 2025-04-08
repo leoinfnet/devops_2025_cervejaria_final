@@ -10,8 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -23,6 +22,7 @@ public class LupuloServiceTests {
         int size = lupuloService.findAll().size();
         assertEquals(16, size);
         lupuloService.findAll().forEach(System.out::println);
+        assertTrue(false);
 
     }
     @Test@DisplayName("Deve testar a paginacao")
