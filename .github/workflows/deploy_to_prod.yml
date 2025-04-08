@@ -58,4 +58,4 @@ jobs:
 
       - name: copiar artefato
         run: |
-          cp target/*.jar doccker/app.jar
+          cp target/*.jar docker/app.jar
