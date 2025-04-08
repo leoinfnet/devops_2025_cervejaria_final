@@ -22,7 +22,6 @@ public class LupuloServiceTests {
         int size = lupuloService.findAll().size();
         assertEquals(16, size);
         lupuloService.findAll().forEach(System.out::println);
-        assertTrue(false);
 
     }
     @Test@DisplayName("Deve testar a paginacao")
