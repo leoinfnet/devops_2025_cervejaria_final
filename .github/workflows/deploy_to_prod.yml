@@ -26,5 +26,18 @@ jobs:
         run: mvn clean
       - name: Executar testes
         run: mvn test
+      - name: Incrementar Versao
+        run: |
+          current=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "Versão atual: $current"
+          
+          IFS='.' read -r major minor patch <<< "$current"
+          new_major=$((major + 1))
+          next="$new_major.$minor.$patch"
+          echo "Nova versão: $next"
+          
+          mvn versions:set -DnewVersion=$next
+          echo "new_version=$next" >> "$GITHUB_OUTPUT"
+
       - name: Build do Projeto
         run: mvn package -DskipTests
