@@ -7,10 +7,10 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - name: Config GIT
-        run: |
-          git config user.name "githubActions[bot]"
-          git config user.email "bot@no-reply.com"
+#      - name: Config GIT
+#        run: |
+#          git config user.name "githubActions[bot]"
+#          git config user.email "bot@no-reply.com"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Java 21
