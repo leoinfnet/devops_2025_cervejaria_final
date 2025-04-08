@@ -72,5 +72,9 @@ jobs:
         run: docker push leogloriainfnet/cervejaria:latest
       - name: Docker Push
         run: docker push leogloriainfnet/cervejaria:4.0
+      - name: Atualizando K8s
+        run: kubectl rollout restart deploy cervejaria-acme -n cervejaria
+      - name: Status do Deploy
+        run: kubectl rollout status deploy cervejaria-acme -n cervejaria
 
 
