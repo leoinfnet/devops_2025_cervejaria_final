@@ -48,7 +48,7 @@ jobs:
         run: mvn package -DskipTests
       - name: Confirmar versao do codigo
         run: | 
-          echo "nova versão é: ${{steps.increment-version.new_version}}
+          echo "nova versão é: ${{steps.increment-version.new_version}}"
 #      - name: Commit do POM
 #        run: |
 #          git add pom.xml
