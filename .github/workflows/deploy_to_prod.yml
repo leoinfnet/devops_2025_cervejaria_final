@@ -42,6 +42,7 @@ jobs:
           echo "Nova versão: $next"
           
           mvn versions:set -DnewVersion=$next
+          new_version=$next" >> "$GITHUB_OUTPUT
           echo "new_version=$next" >> "$GITHUB_OUTPUT"
 
       - name: Build do Projeto
@@ -55,3 +56,6 @@ jobs:
 #          git commit -m "Alterando a versao do projeto"
 #          git push origin main
 
+      - name: copiar artefato
+        run: |
+          cp target/*.jar doccker/app.jar
