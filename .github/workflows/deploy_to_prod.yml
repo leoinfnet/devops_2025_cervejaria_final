@@ -61,4 +61,16 @@ jobs:
           cp target/*.jar docker/app.jar
       - name: Build Docker Image
         run: docker build . -f docker/Dockerfile -t cervejaria:4.0
+      - name: Criar TAG
+        run: docker tag cervejaria:4.0 leogloriainfnet/cervejaria:latest
+      - name: Criar TAG
+        run: docker tag cervejaria:4.0 leogloriainfnet/cervejaria:4.0
+      - name: Docker Login
+        run: |
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
+      - name: Docker Push
+        run: docker push leogloriainfnet/cervejaria:latest
+      - name: Docker Push
+        run: docker push leogloriainfnet/cervejaria:4.0
+
 
