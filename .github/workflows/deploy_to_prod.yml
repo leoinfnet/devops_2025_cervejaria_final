@@ -1,8 +1,11 @@
 name: Deploy To Prod
 on:
+  pull_request:
+    branches:
+      - "prod"
   push:
     branches:
-      - "main"
+      - "prod"
 jobs:
   build:
     runs-on: self-hosted
@@ -30,6 +33,13 @@ jobs:
         run: mvn clean
       - name: Executar testes
         run: mvn test
+      - name: Notificar falha no Discord
+        if: failure()
+        run: |
+            curl -H "Content-Type: application/json" \
+                 -X POST \
+                 -d '{"username": "GitHub Actions", "content": "🚨 **Os testes falharam!** Verifique os logs no GitHub Actions."}' \
+                 ${{ secrets.DISCORD_WEB_HOOK }}dsadada
       - name: Incrementar Versao
         id: increment-version
         run: |
