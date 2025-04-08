@@ -7,6 +7,10 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: Config GIT
+        run: |
+          git config user.name "githubActions[bot]"
+          git config user.email "bot@no-reply.com"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Java 21
@@ -41,3 +45,8 @@ jobs:
 
       - name: Build do Projeto
         run: mvn package -DskipTests
+      - name: Commit do POM
+        run: |
+          git add pom.xml
+          git commit -m "Alterando a versao do projeto"
+          git push origin main
